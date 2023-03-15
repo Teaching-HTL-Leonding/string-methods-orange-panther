@@ -12,6 +12,7 @@ void Welcome(out char indexOf, out char trim)
         indexOf = Console.ReadKey().KeyChar;
         Console.Write("\nChar for \"Trim\":    ");
         trim = Console.ReadKey().KeyChar;
+        inputIsValid = true;
         if (indexOf is ' ' || trim is ' ')
         {
             inputIsValid = false;
@@ -134,6 +135,13 @@ string SubString(string text, int startIndex, int substringLength)
 
 string Remove(string text, int startIndex, int removeLength)
 {
-    text = text[..startIndex] + text[(startIndex + removeLength)..];
+    if (removeLength <= text.Length - startIndex)
+    {
+        text = text[..startIndex] + text[(startIndex + removeLength)..];
+    }
+    else
+    {
+        text = text[..startIndex];
+    }
     return text;
 }
